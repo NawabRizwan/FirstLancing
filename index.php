@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Simple Invoicing</title>
+  <title>Simple Invoice</title>
   <meta charset='utf-8'>
   <meta name="description" content="AngularJS and Angular Code Example for creating Invoices and Invoicing Application">
   <link rel="stylesheet" href="bootstrap.min.css">
@@ -18,8 +18,8 @@
     </div>
     <div class="row branding">
         <div class="col-xs-6 logo-container">
-        <input type="file" id="imgInp" />
-        <img ng-hide="logoRemoved" id="company_logo" ng-src="{{ logo }}" alt="your image" width="300" />
+          <input type="file" id="imgInp" />
+          <img ng-hide="logoRemoved" id="company_logo" ng-src="{{ logo }}" alt="your image" width="300" />
         <div>
           <div class="noPrint" ng-hide="printMode">
             <a ng-click="editLogo()" href >Edit Logo</a>
@@ -36,23 +36,25 @@
       
     </div>
     <div class="row infos">
-      <div class="col-xs-6">
-        <div class="input-container"><input type="text" ng-model="invoice.customer_info.name"/></div>
-        <div class="input-container"><input type="text" ng-model="invoice.customer_info.web_link"/></div>
-        <div class="input-container"><input type="text" ng-model="invoice.customer_info.address1"/></div>
-        <div class="input-container"><input type="text" ng-model="invoice.customer_info.address2"/></div>
-        <div class="input-container"><input type="text" ng-model="invoice.customer_info.postal"/></div>
-        <div class="input-container" data-ng-hide='printMode'>
-          <select ng-model='currencySymbol' ng-options='currency.symbol as currency.name for currency in availableCurrencies'></select>
-        </div>
-      </div>
-      <div class="col-xs-6 right">
+    <div class="col-xs-6">
         <div class="input-container"><input type="text" ng-model="invoice.company_info.name"/></div>
         <div class="input-container"><input type="text" ng-model="invoice.company_info.web_link"/></div>
         <div class="input-container"><input type="text" ng-model="invoice.company_info.address1"/></div>
         <div class="input-container"><input type="text" ng-model="invoice.company_info.address2"/></div>
         <div class="input-container"><input type="text" ng-model="invoice.company_info.postal"/></div>
+        <div class="input-container" data-ng-hide='printMode'>
+          <select ng-model='currencySymbol' ng-options='currency.symbol as currency.name for currency in availableCurrencies'></select>
+        </div>
       </div>
+      <div class="col-xs-6 right">
+        <div class="input-container"><input type="text" ng-model="invoice.customer_info.name"/></div>
+        <div class="input-container"><input type="text" ng-model="invoice.customer_info.web_link"/></div>
+        <div class="input-container"><input type="text" ng-model="invoice.customer_info.address1"/></div>
+        <div class="input-container"><input type="text" ng-model="invoice.customer_info.address2"/></div>
+        <div class="input-container"><input type="text" ng-model="invoice.customer_info.postal"/></div>
+        
+      </div>
+      
     </div>
     <div class="items-table">
       <div class="row header">
@@ -64,7 +66,7 @@
       </div>
       <div class="row invoice-item" ng-repeat="item in invoice.items" ng-animate="'slide-down'">
         <div class="col-xs-1 remove-item-container">
-          <a href ng-hide="printMode" ng-click="removeItem(item)" class="btn btn-danger">[X]</a>
+          <a href ng-hide="printMode" ng-click="removeItem(item)" class="btn btn-danger">x</a>
         </div>
         <div class="col-xs-5 input-container">
           <input ng-model="item.description" placeholder="Description" />
@@ -81,7 +83,7 @@
       </div>
       <div class="row invoice-item">
         <div class="col-xs-12 add-item-container" ng-hide="printMode">
-          <a class="btn btn-primary" href ng-click="addItem()" >[+]</a>
+          <a class="btn btn-primary" href ng-click="addItem()" >+</a>
         </div>
       </div>
       <div class="row">
@@ -89,7 +91,7 @@
         <div class="col-xs-2 text-right">{{invoiceSubTotal() | currency: currencySymbol}}</div>
       </div>
       <div class="row">
-        <div class="col-xs-10 text-right">Tax(%): <input ng-model="invoice.tax" ng-validate="number" style="width:43px"></div>
+        <div class="col-xs-10 text-right">Tax(%): <input ng-model="invoice.tax" ng-validate="number" style="width:40px;text-align: right;" ></div>
         <div class="col-xs-2 text-right">{{calculateTax() | currency: currencySymbol}}</div>
       </div>
       <div class="row">
