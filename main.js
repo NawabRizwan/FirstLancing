@@ -1,7 +1,7 @@
 angular.module('invoicing', [])
 
 // The default logo for the invoice
-.constant('DEFAULT_LOGO', 'images/metaware_logo.png')
+.constant('DEFAULT_LOGO', 'metaware_logo.png')
 
 // The invoice displayed when the user first uses the app
 .constant('DEFAULT_INVOICE', {
